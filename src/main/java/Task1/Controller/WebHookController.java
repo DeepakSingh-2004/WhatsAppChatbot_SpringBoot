@@ -13,7 +13,7 @@ import Task1.Service.ChatService;
 @RequestMapping("/webhook")
 public class WebHookController {
 
-    // ✅ Logger at class level
+    //  Logger at class level
     private static final Logger logger = LoggerFactory.getLogger(WebHookController.class);
 
     @Autowired
@@ -26,22 +26,22 @@ public class WebHookController {
     @PostMapping
     public MessageResponse receiveMessage(@RequestBody MessageRequest request) {
 
-        // ✅ Proper logging
+        // logging
         logger.info("Incoming Message: {}", request.getMessage());
 
         // Get reply from service
         String reply = chatService.getReply(request.getMessage());
 
-        // Log response also (bonus ⭐)
+        // Log response also 
         logger.info("Reply Sent: {}", reply);
 
         // Return response
         return new MessageResponse(reply);
     }
 
-    // ✅ For browser testing
+    //  For browser testing
     @GetMapping("/")
     public String home() {
-        return "WhatsApp Chatbot is running 🚀";
+        return "WhatsApp Chatbot is running ";
     }
 }
